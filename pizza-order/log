@@ -1,0 +1,132 @@
+
+> test
+> jest ./*
+
+FAIL ./pizza-order.spec.js
+  Price for pizza margherita
+    ✓ pizzaPrice('Margherita') (2 ms)
+  Price for pizza formaggio
+    ✓ pizzaPrice('Formaggio')
+  Price for pizza caprese
+    ✓ pizzaPrice('Caprese') (1 ms)
+  Price for pizza margherita with extra sauce
+    ✓ pizzaPrice('Margherita', 'ExtraSauce')
+  Price for pizza caprese with extra toppings
+    ✓ pizzaPrice('Caprese', 'ExtraToppings')
+  Price for pizza formaggio with extra sauce and toppings
+    ✓ pizzaPrice('Formaggio', 'ExtraSauce', 'ExtraToppings')
+  Price for pizza caprese with extra sauce and toppings
+    ✓ pizzaPrice('Caprese', 'ExtraSauce', 'ExtraToppings')
+  Price for pizza caprese with a lot of extra toppings
+    ✓ pizzaPrice('Caprese', 'ExtraToppings', 'ExtraToppings', 'ExtraToppings', 'ExtraToppings') (1 ms)
+  Order price for no pizzas
+    ✓ orderPrice([])
+  Order price for a single pizza caprese
+    ✕ orderPrice([PizzaOrder('Caprese')]) (1 ms)
+  Order price for a single pizza formaggio with extra sauce
+    ✕ orderPrice([PizzaOrder('Formaggio', 'ExtraSauce')]) (1 ms)
+  Order price for one pizza margherita and one pizza caprese with extra toppings
+    ✕ orderPrice([PizzaOrder('Margherita'), PizzaOrder('Caprese', 'ExtraToppings')])
+  Order price for one pizza margherita with a LOT of sauce and one pizza caprese with a LOT of toppings
+    ✕ orderPrice([PizzaOrder('Margherita', 'ExtraSauce', 'ExtraSauce', 'ExtraSauce'), PizzaOrder('Caprese', 'ExtraToppings', 'ExtraToppings', 'ExtraToppings', 'ExtraToppings')])
+  Order price for very large order
+    ✕ orderPrice([/* lots of */]) (1 ms)
+  Order price for a gigantic order
+    ✕ orderPrice([/* lots of */]) (9 ms)
+
+  ● Order price for a single pizza caprese › orderPrice([PizzaOrder('Caprese')])
+
+    TypeError: chunk.shift is not a function
+
+      38 |     let chunks = chunck(pizzaOrders);
+      39 |     for(let chunk of chunks){
+    > 40 |         let item = chunk.shift();
+         |                          ^
+      41 |         let price = pizzaPrice(item.pizza, ...item.extras);
+      42 |         total += price +orderPrice(chunck);
+      43 |         console.log("total", total);
+
+      at shift (pizza-order.js:40:26)
+      at Object.<anonymous> (pizza-order.spec.js:82:22)
+
+  ● Order price for a single pizza formaggio with extra sauce › orderPrice([PizzaOrder('Formaggio', 'ExtraSauce')])
+
+    TypeError: chunk.shift is not a function
+
+      38 |     let chunks = chunck(pizzaOrders);
+      39 |     for(let chunk of chunks){
+    > 40 |         let item = chunk.shift();
+         |                          ^
+      41 |         let price = pizzaPrice(item.pizza, ...item.extras);
+      42 |         total += price +orderPrice(chunck);
+      43 |         console.log("total", total);
+
+      at shift (pizza-order.js:40:26)
+      at Object.<anonymous> (pizza-order.spec.js:89:22)
+
+  ● Order price for one pizza margherita and one pizza caprese with extra toppings › orderPrice([PizzaOrder('Margherita'), PizzaOrder('Caprese', 'ExtraToppings')])
+
+    TypeError: chunk.shift is not a function
+
+      38 |     let chunks = chunck(pizzaOrders);
+      39 |     for(let chunk of chunks){
+    > 40 |         let item = chunk.shift();
+         |                          ^
+      41 |         let price = pizzaPrice(item.pizza, ...item.extras);
+      42 |         total += price +orderPrice(chunck);
+      43 |         console.log("total", total);
+
+      at shift (pizza-order.js:40:26)
+      at Object.<anonymous> (pizza-order.spec.js:98:22)
+
+  ● Order price for one pizza margherita with a LOT of sauce and one pizza caprese with a LOT of toppings › orderPrice([PizzaOrder('Margherita', 'ExtraSauce', 'ExtraSauce', 'ExtraSauce'), PizzaOrder('Caprese', 'ExtraToppings', 'ExtraToppings', 'ExtraToppings', 'ExtraToppings')])
+
+    TypeError: chunk.shift is not a function
+
+      38 |     let chunks = chunck(pizzaOrders);
+      39 |     for(let chunk of chunks){
+    > 40 |         let item = chunk.shift();
+         |                          ^
+      41 |         let price = pizzaPrice(item.pizza, ...item.extras);
+      42 |         total += price +orderPrice(chunck);
+      43 |         console.log("total", total);
+
+      at shift (pizza-order.js:40:26)
+      at Object.<anonymous> (pizza-order.spec.js:121:22)
+
+  ● Order price for very large order › orderPrice([/* lots of */])
+
+    TypeError: chunk.shift is not a function
+
+      38 |     let chunks = chunck(pizzaOrders);
+      39 |     for(let chunk of chunks){
+    > 40 |         let item = chunk.shift();
+         |                          ^
+      41 |         let price = pizzaPrice(item.pizza, ...item.extras);
+      42 |         total += price +orderPrice(chunck);
+      43 |         console.log("total", total);
+
+      at shift (pizza-order.js:40:26)
+      at Object.<anonymous> (pizza-order.spec.js:149:30)
+
+  ● Order price for a gigantic order › orderPrice([/* lots of */])
+
+    TypeError: chunks is not iterable
+
+      37 |     if(pizzaOrders.length==0)return 0;
+      38 |     let chunks = chunck(pizzaOrders);
+    > 39 |     for(let chunk of chunks){
+         |                      ^
+      40 |         let item = chunk.shift();
+      41 |         let price = pizzaPrice(item.pizza, ...item.extras);
+      42 |         total += price +orderPrice(chunck);
+
+      at chunks (pizza-order.js:39:22)
+      at orderPrice (pizza-order.js:42:25)
+      at Object.<anonymous> (pizza-order.spec.js:168:30)
+
+Test Suites: 1 failed, 1 total
+Tests:       6 failed, 9 passed, 15 total
+Snapshots:   0 total
+Time:        0.585 s, estimated 2 s
+Ran all test suites matching /.\/HELP.md|.\/HINTS.md|.\/LICENSE|.\/README.md|.\/\|.\/babel.config.js|.\/global.d.ts|.\/log|.\/node_modules|.\/package-lock.json|.\/package.json|.\/pizza-order.js|.\/pizza-order.spec.js/i.
